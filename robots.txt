@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://whytheplatypus.github.com/sitemap.xml 
