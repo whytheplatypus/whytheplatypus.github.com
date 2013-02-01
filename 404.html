@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Random Bits</title>
+  <title>Page Not Found - Random Bits</title>
   <meta name="author" content="David Gage">
 
   
-  <meta name="description" content="I&#8217;ve been working with smartOS alot through VMWare Fusion on my macbook. I was getting sick of looking up IP addresses so I poked around and &hellip;">
+  <meta name="description" content="Page Not Found Oops, I couldn&#8217;t find that page! Sorry about that. Maybe try the search box (top right), or look through the archives? Recent &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://whytheplatypus.github.com/">
+  <link rel="canonical" href="http://whytheplatypus.github.com/404.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -62,88 +62,23 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article role="article">
   
-  
-  
-    <article>
-      
   <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/02/01/setting-up-mdns-on-smartos/">Setting Up mDNS on SmartOS</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-02-01T09:36:00-05:00" pubdate data-updated="true">Feb 1<span>st</span>, 2013</time>
-        
-      </p>
+    <h1 class="entry-title">Page Not Found</h1>
     
   </header>
+  
+  <p>Oops, I couldn&#8217;t find that page! Sorry about that.</p>
 
+<p>Maybe try the search box (top right), or look through the <a href="/archives/">archives</a>?</p>
 
-  <div class="entry-content"><p>I&#8217;ve been working with smartOS alot through VMWare Fusion on my macbook.  I was getting sick of looking up IP addresses so I poked around and sure enough mdns was there the whole time..</p>
+  
+</article>
 
-<p>It took me a bit to figure out how to enable it on the VMs, turns out it&#8217;s straightforward. Just running this in a VM should do it.</p>
-
-<div><script src='https://gist.github.com/4692693.js?file=enableMulticast.sh'></script>
-<noscript><pre><code>#!/bin/bash
-mv /etc/nsswitch.conf /etc/nsswitch.conf_old
-cp /etc/nsswitch.dns /etc/nsswitch.conf
- 
-svcadm enable multicast
-svcs multicast</code></pre></noscript></div>
-
-
-<p>I also put together a quick script to let me make and name new nodes quickly.</p>
-
-<div><script src='https://gist.github.com/4692705.js?file=createNode.sh'></script>
-<noscript><pre><code>#!/bin/bash
-export GATEWAY=$(netstat -r | grep default | awk '{ print $2 }')
-
-echo &quot;{
-      \&quot;brand\&quot;: \&quot;joyent\&quot;,
-      \&quot;dataset_uuid\&quot;: \&quot;$1\&quot;,
-      \&quot;hostname\&quot;: \&quot;$2\&quot;,
-      \&quot;alias\&quot;: \&quot;$3\&quot;,
-      \&quot;nics\&quot;: [
-        {
-          \&quot;nic_tag\&quot;: \&quot;admin\&quot;,
-          \&quot;ip\&quot;: \&quot;dhcp\&quot;,
-          \&quot;netmask\&quot;: \&quot;255.255.255.0\&quot;,
-          \&quot;gateway\&quot;:\&quot;${GATEWAY}\&quot;
-        }
-      ]
-}&quot; | vmadm create</code></pre></noscript></div>
-
-
-<p>enjoy!</p>
-
-<p>~WhyThePlatypus</p>
 </div>
-  
-  
 
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     <section>
@@ -160,7 +95,7 @@ echo &quot;{
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   
   <a href="https://github.com/whytheplatypus">@whytheplatypus</a> on GitHub
@@ -190,7 +125,7 @@ echo &quot;{
 <section>
   <h1>Latest Tweets</h1>
   <ul id="tweets">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   <script type="text/javascript">
     $.domReady(function(){
@@ -218,6 +153,7 @@ echo &quot;{
 
   
 </aside>
+
 
     </div>
   </div>
