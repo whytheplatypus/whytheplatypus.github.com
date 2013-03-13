@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: opensource | Random Bits]]></title>
+  <link href="http://whytheplatypus.github.com/blog/categories/opensource/atom.xml" rel="self"/>
+  <link href="http://whytheplatypus.github.com/"/>
+  <updated>2013-03-13T17:15:55-04:00</updated>
+  <id>http://whytheplatypus.github.com/</id>
+  <author>
+    <name><![CDATA[David Gage]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[openwebwork at Raleigh]]></title>
+    <link href="http://whytheplatypus.github.com/blog/2013/03/13/openwebwork-at-raleigh/"/>
+    <updated>2013-03-13T15:38:00-04:00</updated>
+    <id>http://whytheplatypus.github.com/blog/2013/03/13/openwebwork-at-raleigh</id>
+    <content type="html"><![CDATA[<p>We just finished up another webwork code camp, WeBWorK::Raleigh::2013.<br/>
+It's always such a blast, especially when we get to work in such a nice environment. The NC State math building is fantastic.</p>
+
+<p>We're trying out a new workflow based on <a href="https://github.com/nvie/gitflow">git flow</a> that Djun Kim and Davide Cervone put together.  There should be a write up for it up on the <a href="http://webwork.maa.org/wiki/Main_Page">wiki</a> in the next few days if there aren't already.  It looks like it will be much easier to maintain... of course coming from what we were doing that's not a hard sell.</p>
+
+<p>The main thing I'm excited about is getting a new WeBWorK API written down.  If we can standardise how we send requests and what data we're guarenteed to get back then a new back end and as many apps and tools that tie into it as we want wont be far behind.</p>
+
+<p>Here's the <a href="https://github.com/openwebwork/WeBWorK-API">API so far</a>. Any and all pull requests, forks, and suggestions help!  The idea is to specify what the request and response will be at a minimum so that applications can use it knowing what to expect at the least, but without limiting them to only what's in the API.</p>
+
+<p>oh! Djun also set up <a href="http://openwebwork.org">openwebwork.org</a>.  It's really nice to have a good looking face for the project :)</p>
+
+<p>~WhyThePlatypus</p>
+]]></content>
+  </entry>
+  
+</feed>
