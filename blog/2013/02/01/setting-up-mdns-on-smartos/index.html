@@ -28,13 +28,16 @@
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="platypus.css" rel="stylesheet" type"text/css">
 
   
 
 </head>
 
 <body   >
-  <header role="banner"><hgroup>
+  
+  <header role="banner">
+<hgroup>
   <h1><a href="/">Random Bits</a></h1>
   
     <h2>Little things I learned along the way.</h2>
@@ -42,6 +45,26 @@
 </hgroup>
 
 </header>
+  <div id="platypus" class="platypus standing">
+    <div class='why'>?</div>
+    <div class='pi'>&pi;</div>
+    <div class='omega'>&Omega;</div>
+    <div class='phi'>&Phi;</div>
+    <div class='alpha'>&alpha;</div>
+    <div class='eta front'>&eta;</div>
+    <div class='eta back'>&eta;</div>
+</div>
+<script>
+	function transform(){
+	    if(document.getElementById("platypus").className == "platypus standing"){
+	        document.getElementById("platypus").className = "platypus walking";
+	    } else {
+	        document.getElementById("platypus").className = "platypus standing";
+	    }
+	}
+	    
+	document.getElementById("platypus").addEventListener("click", transform, false);
+</script>
   <nav role="navigation"><ul class="subscription" data-subscription="rss">
   <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
   
