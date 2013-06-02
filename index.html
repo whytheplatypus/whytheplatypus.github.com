@@ -9,7 +9,7 @@
   <meta name="author" content="David Gage">
 
   
-  <meta name="description" content="Looks like VMWare support is coming to Vagrant. Vagrant was mentioned on WeBWorK&#8217;s devel list awhile back as a possiblilty for easy dev &hellip;">
+  <meta name="description" content="Here&#8217;s our board at the end of the day! The group so far is made up of myself, Danny, Eric, Brian, Geoff, Aaron, Mark, and Bill (apologies if I &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -28,6 +28,8 @@
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="platypus.css" rel="stylesheet" type"text/css">
+
   
 
 </head>
@@ -36,6 +38,13 @@
   
   <header role="banner">
 <hgroup>
+  <h1><a href="/">Random Bits</a></h1>
+  
+    <h2>Little things I learned, or think I did.</h2>
+  
+</hgroup>
+
+</header>
   <div id="platypus" class="platypus standing">
     <div class='why'>?</div>
     <div class='pi'>&pi;</div>
@@ -56,13 +65,6 @@
 	    
 	document.getElementById("platypus").addEventListener("click", transform, false);
 </script>
-  <h1><a href="/">Random Bits</a></h1>
-  
-    <h2>Little things I learned, or think I did.</h2>
-  
-</hgroup>
-
-</header>
   <nav role="navigation"><ul class="subscription" data-subscription="rss">
   <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
   
@@ -85,6 +87,165 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/06/01/webwork-annarbor-db-day-one/">WeBWorK:AnnArbor DB Day One</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-01T21:14:00-04:00" pubdate data-updated="true">Jun 1<span>st</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Here&#8217;s our board at the end of the day!</p>
+
+<p><img src="https://dl.dropboxusercontent.com/u/3154638/PANO_20130601_154030.jpg"></p>
+
+<p>The group so far is made up of myself, Danny, Eric, Brian, Geoff, Aaron, Mark, and Bill (apologies if I&#8217;ve missed anyone!). We spent the day descussing <a href="http://en.wikipedia.org/wiki/User_story">user stories</a>, mostly back and forth between Danny, Bill, and Aaron, and doing our best to put together some concept of the under-riding data models that make up the atoms of all of these stories.
+Some of these stories are up on the <a href="http://webwork.maa.org/wiki/User_Stories">WeBWorK Wiki</a> page with more to come, as soon as people write them. I figured user stories would be useful, but I was still stunned by exactly how helpful they were in staying on track and getting a real grasp of what objects are being dealt with in WeBWorK.</p>
+
+<p>Largely for my own reference this is the basic conceptual model, by Eric, of the portion of WeBWorK&#8217;s architecture that we are working on.
+<img src="https://dl.dropboxusercontent.com/u/3154638/DataLayers.png">
+At the moment we&#8217;re focused on the &#8220;Model&#8221; part of the structure. Essentially trying to figure out what <em>things</em> are in webwork, what they look like, and some of how they behave.</p>
+
+<p>Below is the outline of our data models so far. Anything ending in <code>()</code> is a behavior of the model, <code>A/B</code> implies a kind of relationship, everything else is an attribute.</p>
+
+<blockquote><ul>
+<li><strong>User</strong>
+
+<ul>
+<li>username</li>
+<li>tags</li>
+<li>contact/personal info</li>
+<li>password</li>
+<li>achievement info</li>
+<li>addCourse()</li>
+<li>joinTeam(course,teamID)</li>
+<li>getTeams()</li>
+</ul>
+</li>
+<li><strong>Course</strong>
+
+<ul>
+<li>start date</li>
+<li>end date</li>
+<li>state [open/closed]</li>
+<li>addUser()</li>
+<li><em>Course/Participant</em>
+
+<ul>
+<li>tags</li>
+<li>status [active/inactive]</li>
+<li>getSets()</li>
+<li>addSet()</li>
+<li>description</li>
+<li>getType</li>
+<li><em>Course/User</em>
+
+<ul>
+<li>permisions level</li>
+<li>getGrade()</li>
+<li>getTeams()</li>
+</ul>
+</li>
+<li><em>Course/Team</em>
+
+<ul>
+<li>getMembers()</li>
+<li>clone()</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Set</strong>
+
+<ul>
+<li>Descriptive Info</li>
+<li>tags</li>
+<li>template for versioning</li>
+<li>grading scheme</li>
+<li>getProblemPoolList() enumerated</li>
+<li>versioning information</li>
+<li>grading Information</li>
+<li><em>Set/Course</em>
+
+<ul>
+<li>Due/Assignment/Answer Date Info</li>
+<li>overrides for set data</li>
+<li>IP Restriction Info</li>
+<li>getAssignedParticipants()</li>
+<li><em>Set/Course/Participant</em>
+
+<ul>
+<li>overrides for set course data</li>
+<li>getSetGrade()</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Problem</strong>
+
+<ul>
+<li>id</li>
+<li>.PG info</li>
+</ul>
+</li>
+<li><strong>Problem Pool</strong>
+
+<ul>
+<li>tags</li>
+<li>problems</li>
+<li>get random problems()</li>
+<li>get unique problem()</li>
+</ul>
+</li>
+<li><strong>Team</strong>
+
+<ul>
+<li>student (list)</li>
+<li>description</li>
+<li>course</li>
+<li>grade</li>
+</ul>
+</li>
+<li><strong>Attempt</strong>
+
+<ul>
+<li>time</li>
+<li>score</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -239,6 +400,10 @@ It&#8217;s always such a blast, especially when we get to work in such a nice en
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/06/01/webwork-annarbor-db-day-one/">WeBWorK:AnnArbor DB day one</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/03/14/vmware-support-coming-to-vagrant/">VMWare support coming to Vagrant</a>

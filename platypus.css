@@ -6,7 +6,6 @@
   cursor:pointer;
   background:transparent;
   transform: scale(2);
-  text-align: left;
   -webkit-transform: scale(2);
 }
 .platypus div{

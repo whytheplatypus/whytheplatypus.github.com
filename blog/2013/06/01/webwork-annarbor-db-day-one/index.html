@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>VMWare support coming to Vagrant - Random Bits</title>
+  <title>WeBWorK:AnnArbor DB day one - Random Bits</title>
   <meta name="author" content="David Gage">
 
   
-  <meta name="description" content="Looks like VMWare support is coming to Vagrant. Vagrant was mentioned on WeBWorK&#8217;s devel list awhile back as a possiblilty for easy dev &hellip;">
+  <meta name="description" content="Here&#8217;s our board at the end of the day! The group so far is made up of myself, Danny, Eric, Brian, Geoff, Aaron, Mark, and Bill (apologies if I &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://whytheplatypus.github.com/blog/2013/03/14/vmware-support-coming-to-vagrant/">
+  <link rel="canonical" href="http://whytheplatypus.github.com/blog/2013/06/01/webwork-annarbor-db-day-one/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -90,7 +90,7 @@
   
   <header>
     
-      <h1 class="entry-title">VMWare Support Coming to Vagrant</h1>
+      <h1 class="entry-title">WeBWorK:AnnArbor DB Day One</h1>
     
     
       <p class="meta">
@@ -106,23 +106,137 @@
   
 
 
-<time datetime="2013-03-14T17:14:00-04:00" pubdate data-updated="true">Mar 14<span>th</span>, 2013</time>
+<time datetime="2013-06-01T21:14:00-04:00" pubdate data-updated="true">Jun 1<span>st</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p><a href="http://vimeo.com/58059557">Looks like VMWare support</a> is coming to <a href="http://www.vagrantup.com/">Vagrant</a>.</p>
+<div class="entry-content"><p>Here&#8217;s our board at the end of the day!</p>
 
-<p><a href="http://www.vagrantup.com/">Vagrant</a> was mentioned on WeBWorK&#8217;s devel list awhile back as a possiblilty for easy dev installs for our developers.  At the time I looked at it and decided against putting energy into it because I thought VitrualBox was kind of clunky (I have no argument or evidence to support that by the way…) and the stand alone DMG we had worked well enough for a quick mac dev distro.<br/>
-I&#8217;ve been using VMWare to play with SmartOS for awhile, I&#8217;ve also got a couple ubuntu WeBWorK installs on it, and I really like it so far.</p>
+<p><img src="https://dl.dropboxusercontent.com/u/3154638/PANO_20130601_154030.jpg"></p>
 
-<p>If <a href="http://www.vagrantup.com/">Vagrant</a> is going to support it and, possibly even more exciting, <a href="http://www.hashicorp.com/blog/preview-vagrant-aws.html">cloud options</a> I think it could become an extreamly useful tool for WeBWorK developers and maybe even for the folks managing WeBWorK installs around the world.</p>
+<p>The group so far is made up of myself, Danny, Eric, Brian, Geoff, Aaron, Mark, and Bill (apologies if I&#8217;ve missed anyone!). We spent the day descussing <a href="http://en.wikipedia.org/wiki/User_story">user stories</a>, mostly back and forth between Danny, Bill, and Aaron, and doing our best to put together some concept of the under-riding data models that make up the atoms of all of these stories.
+Some of these stories are up on the <a href="http://webwork.maa.org/wiki/User_Stories">WeBWorK Wiki</a> page with more to come, as soon as people write them. I figured user stories would be useful, but I was still stunned by exactly how helpful they were in staying on track and getting a real grasp of what objects are being dealt with in WeBWorK.</p>
 
-<p>It looks like these new features are set to land sometime in the middle of March, so I&#8217;ll keep an eye on it and hopfull have some setups for WeBWorK soon after it&#8217;s available.</p>
+<p>Largely for my own reference this is the basic conceptual model, by Eric, of the portion of WeBWorK&#8217;s architecture that we are working on.
+<img src="https://dl.dropboxusercontent.com/u/3154638/DataLayers.png">
+At the moment we&#8217;re focused on the &#8220;Model&#8221; part of the structure. Essentially trying to figure out what <em>things</em> are in webwork, what they look like, and some of how they behave.</p>
 
-<p>~WhyThePlatypus</p>
+<p>Below is the outline of our data models so far. Anything ending in <code>()</code> is a behavior of the model, <code>A/B</code> implies a kind of relationship, everything else is an attribute.</p>
+
+<blockquote><ul>
+<li><strong>User</strong>
+
+<ul>
+<li>username</li>
+<li>tags</li>
+<li>contact/personal info</li>
+<li>password</li>
+<li>achievement info</li>
+<li>addCourse()</li>
+<li>joinTeam(course,teamID)</li>
+<li>getTeams()</li>
+</ul>
+</li>
+<li><strong>Course</strong>
+
+<ul>
+<li>start date</li>
+<li>end date</li>
+<li>state [open/closed]</li>
+<li>addUser()</li>
+<li><em>Course/Participant</em>
+
+<ul>
+<li>tags</li>
+<li>status [active/inactive]</li>
+<li>getSets()</li>
+<li>addSet()</li>
+<li>description</li>
+<li>getType</li>
+<li><em>Course/User</em>
+
+<ul>
+<li>permisions level</li>
+<li>getGrade()</li>
+<li>getTeams()</li>
+</ul>
+</li>
+<li><em>Course/Team</em>
+
+<ul>
+<li>getMembers()</li>
+<li>clone()</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Set</strong>
+
+<ul>
+<li>Descriptive Info</li>
+<li>tags</li>
+<li>template for versioning</li>
+<li>grading scheme</li>
+<li>getProblemPoolList() enumerated</li>
+<li>versioning information</li>
+<li>grading Information</li>
+<li><em>Set/Course</em>
+
+<ul>
+<li>Due/Assignment/Answer Date Info</li>
+<li>overrides for set data</li>
+<li>IP Restriction Info</li>
+<li>getAssignedParticipants()</li>
+<li><em>Set/Course/Participant</em>
+
+<ul>
+<li>overrides for set course data</li>
+<li>getSetGrade()</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Problem</strong>
+
+<ul>
+<li>id</li>
+<li>.PG info</li>
+</ul>
+</li>
+<li><strong>Problem Pool</strong>
+
+<ul>
+<li>tags</li>
+<li>problems</li>
+<li>get random problems()</li>
+<li>get unique problem()</li>
+</ul>
+</li>
+<li><strong>Team</strong>
+
+<ul>
+<li>student (list)</li>
+<li>description</li>
+<li>course</li>
+<li>grade</li>
+</ul>
+</li>
+<li><strong>Attempt</strong>
+
+<ul>
+<li>time</li>
+<li>score</li>
+</ul>
+</li>
+</ul>
+</blockquote>
 </div>
 
 
@@ -145,12 +259,12 @@ I&#8217;ve been using VMWare to play with SmartOS for awhile, I&#8217;ve also go
   
 
 
-<time datetime="2013-03-14T17:14:00-04:00" pubdate data-updated="true">Mar 14<span>th</span>, 2013</time>
+<time datetime="2013-06-01T21:14:00-04:00" pubdate data-updated="true">Jun 1<span>st</span>, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/virtualization/'>Virtualization</a>, <a class='category' href='/blog/categories/webwork/'>WeBWorK</a>
+    <a class='category' href='/blog/categories/architecture/'>Architecture</a>, <a class='category' href='/blog/categories/database-/'>Database,</a>, <a class='category' href='/blog/categories/software/'>Software</a>, <a class='category' href='/blog/categories/webwork-/'>WeBWorK,</a>
   
 </span>
 
@@ -159,7 +273,7 @@ I&#8217;ve been using VMWare to play with SmartOS for awhile, I&#8217;ve also go
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://whytheplatypus.github.com/blog/2013/03/14/vmware-support-coming-to-vagrant/" data-via="whytheplatypus" data-counturl="http://whytheplatypus.github.com/blog/2013/03/14/vmware-support-coming-to-vagrant/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://whytheplatypus.github.com/blog/2013/06/01/webwork-annarbor-db-day-one/" data-via="whytheplatypus" data-counturl="http://whytheplatypus.github.com/blog/2013/06/01/webwork-annarbor-db-day-one/" >Tweet</a>
   
   
   
@@ -168,10 +282,8 @@ I&#8217;ve been using VMWare to play with SmartOS for awhile, I&#8217;ve also go
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/03/13/openwebwork-at-raleigh/" title="Previous Post: openwebwork at Raleigh">&laquo; openwebwork at Raleigh</a>
+        <a class="basic-alignment left" href="/blog/2013/03/14/vmware-support-coming-to-vagrant/" title="Previous Post: VMWare support coming to Vagrant">&laquo; VMWare support coming to Vagrant</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/06/01/webwork-annarbor-db-day-one/" title="Next Post: WeBWorK:AnnArbor DB day one">WeBWorK:AnnArbor DB day one &raquo;</a>
       
     </p>
   </footer>
