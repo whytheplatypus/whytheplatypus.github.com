@@ -4,7 +4,7 @@
   <title><![CDATA[Random Bits]]></title>
   <link href="http://whytheplatypus.github.com/atom.xml" rel="self"/>
   <link href="http://whytheplatypus.github.com/"/>
-  <updated>2013-06-01T22:36:25-04:00</updated>
+  <updated>2013-06-04T19:38:47-04:00</updated>
   <id>http://whytheplatypus.github.com/</id>
   <author>
     <name><![CDATA[David Gage]]></name>
@@ -12,6 +12,29 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[WeBWorK:AnnArbor epilogue]]></title>
+    <link href="http://whytheplatypus.github.com/blog/2013/06/04/webwork-annarbor-epilogue/"/>
+    <updated>2013-06-04T17:15:00-04:00</updated>
+    <id>http://whytheplatypus.github.com/blog/2013/06/04/webwork-annarbor-epilogue</id>
+    <content type="html"><![CDATA[<p>Well WeBWorK::AnnArbor is over and WeBWorK has grown in leaps and bounds… or at least it plans to.</p>
+
+<p>Our group finished a data model that survived scrutiny by the rest of the participants. For those of you in the openwebwork community a link to an editable workflowy document of the data model is buried somewhere in the google doc for WeBWorK::AnnArbor.</p>
+
+<p>With this model, the next iteration of WeBWorK will have some nice new features. One of the more interesting to me is the use of the <a href="http://en.wikipedia.org/wiki/Strategy_pattern">strategy pattern</a>. At the moment there are two places this is used, both in the Set object. The first will define how the problems are chosen (in terms of random seed, etc.) and generated. The second will determine how the Set and it&#8217;s problems are graded. Ambitious future users will be able to define their own strategies for these aspects of a Set and greatly increase the power of WeBWorK.</p>
+
+<p>The other big feature is flexible tagging that will exist at almost every level of the data structure. The hope is that this will make creating and working with groups of objects easy for users. Implementing new functionality associated with tags will also be a powerful result, applying automatic actions to set groups of students for example. It will also give researchers a tool for filtering the massive amount of data that WeBWorK can potentially generate.</p>
+
+<p>WeBWorK now has a new, and empty, <a href="https://github.com/whytheplatypus/WeBWorK_BrEWerY">BrEWerY</a> repository where I hope to start building our new bouncing baby homework delivery system. For the moment we&#8217;re thinking the code base will remain largely perl. The overall system structure will be as modular as possible without going crazy.</p>
+
+<p>The persistence layer of our data model provides abstraction between the database and the main WeBWorK programming API. The persistence layer can then be extended to support multiple types and configurations of databases, enabling users to pick and choose the database they would like to use (so long as the persistence layer supports it… or they&#8217;re willing to add that support).</p>
+
+<p>The goal will be a WeBWorK that is extensible, and provides hooks for external applications into its data and functionality.</p>
+
+<p>There was much talk this weekend of using WeBWorK as a tool to gather data about how students learn. We hope that whatever shape the new version of WeBWorK takes, it facilitates the research and progress of math education.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[WeBWorK:AnnArbor DB day one]]></title>
